@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="weather">
+<head>
+    <title>Current weather</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="lib/angularjs/angular.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body ng-controller="main">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" ng-show="no_location">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="a hint where you are" ng-model="q">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="fcst_by_q()" ng-disabled="!q">
+                Show weather
+            </button>
+        </form>
+    </nav>
+    <div class="container" ng-if="fcst && fcst.cod == 200">
+        <div>
+            <h1>{{fcst.name}}</h1>
+            <h2 class="temp">{{fcst.main.temp}}</h2>
+            <span class="wind">{{fcst.wind.speed}} m/s</span>
+            <span class="clock">
+                <div class="arrow" style="transform: rotate({{fcst.wind.deg - 270}}deg);"></div>
+            </span>
+        </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert" ng-show="fcst && fcst.cod && fcst.cod != 200">
+        Sorry, no weather for you today :(
+    </div>
+</body>
+</html>

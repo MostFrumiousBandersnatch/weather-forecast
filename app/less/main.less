@@ -1,0 +1,43 @@
+.temp {
+    margin-bottom: 20px;
+    &::after {
+        content: ' °C';
+    }
+}
+
+.wind {
+    font-size: 1.5em;
+    vertical-align: top;
+}
+
+.clock {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    border: 1px solid black;
+    position: relative;
+
+    >.arrow {
+        position: absolute;
+        top: 49px;
+        left: 0px;
+        width:99px;
+        height: 0px;
+        border-top: 1px solid black;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid black;
+            border-left: none;
+            border-bottom: none;
+            position: absolute;
+            left: 86px;
+            top: -5px;
+            transform: rotate(45deg);
+        }
+    }
+}

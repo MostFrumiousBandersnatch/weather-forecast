@@ -1,0 +1,1 @@
+angular.module('weather_config', []).value('WEATHER_CONFIG',{"APPID":"04e0f084aa9b6740a7b8e77487505b6a"});
